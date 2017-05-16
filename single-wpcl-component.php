@@ -12,73 +12,64 @@ get_header(); ?>
 
 		<?php do_action( 'wpcl_before_main' ); ?>
 
-		<main id="main" class="site-main" role="main">
+			<main id="main" class="site-main" role="main">
 
-		<?php do_action( 'wpcl_before_main_inside' ); ?>
+				<?php do_action( 'wpcl_before_main_inside' ); ?>
 
-		<?php while ( have_posts() ) : the_post(); ?>
+				<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php do_action( 'wpcl_before_entry' ); ?>
+					<?php do_action( 'wpcl_before_entry' ); ?>
 
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-				<?php if ( has_post_thumbnail() ) : ?>
-					<div class="post-thumbnail">
-						<?php the_post_thumbnail(); ?>
-					</div>
-				<?php endif; ?>
+						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-				<header class="entry-header">
-					<div class="entry-header-inner">
-						<h1 class="entry-title"><?php the_title(); ?></h1>
-						<?php wp_component_library()->component_status->get_status(); ?>
-					</div>
-					<div class="entry-meta">
-						<?php wp_component_library()->component->display_post_entry_meta(); ?>
-					</div>
-				</header>
+							<header class="entry-header">
+								<div class="entry-header-inner">
+									<h1 class="entry-title"><?php the_title(); ?></h1>
+									<?php wp_component_library()->component_status->get_status(); ?>
+								</div>
+								<div class="entry-meta">
+									<?php wp_component_library()->component->display_post_entry_meta(); ?>
+								</div>
+							</header>
 
-				<div class="component-example">
-					<?php wp_component_library()->component->display_component(); ?>
-				</div>
+							<div class="component-example">
+								<?php wp_component_library()->component->display_component(); ?>
+							</div>
 
-				<div class="entry-content">
+							<div class="entry-content">
 					
-					<?php the_content(); ?>
-					
-					<?php
-						wp_link_pages( array(
-							'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'wp-component-library' ),
-							'after'  => '</div>',
-						) );
-					?>
-				</div>
+								<?php the_content(); ?>
+								
+								<?php
+									wp_link_pages( array(
+										'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'wp-component-library' ),
+										'after'  => '</div>',
+									) );
+								?>
+							</div>
 
-				<div class="component-code">
-					<?php wp_component_library()->component->display_component_meta(); ?>
-				</div>
+							<div class="component-code">
+								<?php wp_component_library()->component->display_component_meta(); ?>
+							</div><!-- .component-code -->
+						</article>
 
-				<?php //wpcl_the_entry_footer(); ?>
-			</article>
+						<?php the_post_navigation(); ?>
 
-			<?php do_action( 'wpcl_after_entry' ); ?>
+						<?php // Maybe load comments.
+						if ( comments_open() || get_comments_number() ) :
+							comments_template();
+						endif; ?>
 
-			<?php the_post_navigation(); ?>
+					<?php do_action( 'wpcl_after_entry' ); ?>
 
-			<?php
-				// Maybe load comments.
-				if ( comments_open() || get_comments_number() ) {
-					comments_template();
-				}
-			?>
+				<?php endwhile; ?>
 
-		<?php endwhile; ?>
+				<?php do_action( 'wpcl_after_main_inside' ); ?>
 
-		<?php do_action( 'wpcl_after_main_inside' ); ?>
-
-		</main>
+			</main>
 
 		<?php do_action( 'wpcl_after_main' ); ?>
 
-	</div>
+	</div><!-- .content-area -->
 
 <?php get_footer(); ?>
