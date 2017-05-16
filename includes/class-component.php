@@ -129,7 +129,7 @@ class WPCL_Component extends CPT_Core {
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( $author_id ) ) . '">' . esc_html( get_the_author_meta( 'display_name', $author_id ) ) . '</a></span>'
 		);
 
-		printf( '<div class="entry-meta"><span class="posted-on">%s</span><span class="byline">%s</span></div></div>', $posted_on, $byline ); // WPCS: XSS OK.
+		printf( '<div class="entry-meta"><span class="posted-on">%s</span><span class="byline">%s</span></div>', $posted_on, $byline ); // WPCS: XSS OK.
 	}
 
 	/**
