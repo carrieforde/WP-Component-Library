@@ -196,6 +196,7 @@ final class WP_Component_Library {
 	public function hooks() {
 		add_action( 'init', array( $this, 'init' ), 0 );
 		add_action( 'acf/settings/save_json', array( $this, 'acf_json_save_point' ) );
+		add_action( 'acf/settings/load_json', array( $this, 'acf_json_load_point' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts_styles' ) );
 	}
 
@@ -247,9 +248,21 @@ final class WP_Component_Library {
 	public function acf_json_save_point( $path ) {
 
 		// Point the ACF JSON folder to the plugin.
-		$path = plugin_dir_path( __FILE__ ) . '/acf-json';
+		$path = $this->path . 'acf-json';
 
 		return $path;
+	}
+
+	/**
+	 * Tell ACF where our acf-json stuff is saved.
+	 * @param  string  The location of the acf-json directory.
+	 */
+	public function acf_json_load_point( $paths ) {
+
+		// Append path (allows loading of anything in the theme).
+		$paths[] = $this->path . 'acf-json';
+
+		return $paths;
 	}
 
 	/**
