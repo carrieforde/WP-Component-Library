@@ -97,7 +97,7 @@ class WPCL_Image_Hero {
 					<p class="hero-description"><?php echo esc_html( $description ); ?></p>
 				<?php endif; ?>
 
-				<?php if ( ! empty( $cta_button ) ) :
+				<?php if ( 'yes' === $cta_button ) :
 					$button_text = get_post_meta( $post_id, $prefix . 'button_text', true );
 					$button_link = get_post_meta( $post_id, $prefix . 'button_link', true );
 
