@@ -190,13 +190,23 @@ class WPCL_Component extends CPT_Core {
 		}
 
 		// Get our data.
+		$usage          = get_post_meta( $post_id, 'usage', true );
 		$implementation = get_post_meta( $post_id, 'implementation', true );
-		$php   = get_post_meta( $post_id, 'php', true );
-		$sass  = get_post_meta( $post_id, 'sass', true );
-		$js    = get_post_meta( $post_id, 'javascript', true );
+		$php            = get_post_meta( $post_id, 'php', true );
+		$sass           = get_post_meta( $post_id, 'sass', true );
+		$js             = get_post_meta( $post_id, 'javascript', true );
 
 		// Start the markup. 🎉 ?>
 		<div class="wp-component-meta">
+
+			<?php if ( ! empty( $usage ) ) : ?>
+				<div class="component-usage">
+					<header class="meta-heading">
+						<h2><?php esc_html_e( 'Usage', 'wp-component-library' ); ?></h2>
+					</header>
+					<div><?php echo wp_kses_post( $usage ); ?></div>
+				</div>
+			<?php endif; ?>
 
 			<?php if ( ! empty( $implementation ) ) : ?>
 				<div class="code-implementation">
