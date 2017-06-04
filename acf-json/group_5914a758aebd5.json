@@ -154,6 +154,75 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                {
+                    "key": "59337aaaadec3",
+                    "name": "fonts",
+                    "label": "Fonts",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_59337ab3adec4",
+                            "label": "Fonts",
+                            "name": "fonts",
+                            "type": "repeater",
+                            "instructions": "Add the fonts that will be used within the theme.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "collapsed": "",
+                            "min": 0,
+                            "max": 0,
+                            "layout": "table",
+                            "button_label": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_59337ad5adec5",
+                                    "label": "Sass Variable",
+                                    "name": "sass_variable",
+                                    "type": "text",
+                                    "instructions": "If using Sass, add the variable that will be used to apply this font throughout the Sass partials.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "$font__body",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_59337b1fadec6",
+                                    "label": "Font Stack",
+                                    "name": "font_stack",
+                                    "type": "text",
+                                    "instructions": "Add the entire font stack for the font.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "'Source Sans Pro', sans-serif",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             ]
         },
@@ -318,5 +387,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1496545678
+    "modified": 1496546184
 }
