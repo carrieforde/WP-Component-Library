@@ -243,29 +243,7 @@ class WPCL_Component extends CPT_Core {
 		// Determine which layout to grab.
 		foreach ( (array) $component as $count => $component ) {
 
-			switch ( $component ) {
-
-				// Image Hero.
-				case 'image_hero' :
-
-					wp_component_library()->image_hero->image_hero_markup( $post_id, $count );
-					break;
-
-				case 'colors' :
-
-					include( $this->get_component_template_part( 'component', 'colors', false ) );
-					break;
-
-				case 'fonts' :
-
-					include( $this->get_component_template_part( 'component', 'fonts', false ) );
-					break;
-
-				case 'buttons' :
-
-					include( $this->get_component_template_part( 'component', 'buttons', false ) );
-					break;
-			}
+			include( $this->get_component_template_part( 'component', $component, false ) );
 		}
 	}
 
