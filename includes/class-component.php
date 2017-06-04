@@ -55,6 +55,7 @@ class WPCL_Component extends CPT_Core {
 				),
 				'menu_icon' => 'dashicons-archive',
 				'public'    => true,
+				'rewrite'   => array( 'slug' => 'component' ),
 			)
 		);
 	}
