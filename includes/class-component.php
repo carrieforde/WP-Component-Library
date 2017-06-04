@@ -99,7 +99,7 @@ class WPCL_Component extends CPT_Core {
 	 *
 	 * @author  Carrie Forde
 	 */
-	public function display_post_entry_meta() {
+	public function display_post_entry_meta( $post_id = 0 ) {
 
 		if ( ! $post_id ) {
 			$post_id = get_the_ID();
