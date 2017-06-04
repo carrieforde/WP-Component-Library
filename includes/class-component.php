@@ -260,6 +260,11 @@ class WPCL_Component extends CPT_Core {
 
 					include( $this->get_component_template_part( 'component', 'fonts', false ) );
 					break;
+
+				case 'buttons' :
+
+					include( $this->get_component_template_part( 'component', 'buttons', false ) );
+					break;
 			}
 		}
 	}
