@@ -1,0 +1,33 @@
+//--------------------------------------------------------------
+// COLORS
+//--------------------------------------------------------------
+.component-colors {
+
+	.color-group {
+
+		+ .color-group {
+			margin-top: 60px;
+		}
+	}
+
+	.colors {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.color-chip {
+		margin-bottom: 30px;
+		text-align: center;
+		width: 200px;
+	}
+
+	.color {
+		height: 100px;
+		margin: 0 auto;
+		width: 100px;
+	}
+
+	.color-name {
+		font-size: 0.8em;
+	}
+}
