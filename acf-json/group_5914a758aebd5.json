@@ -49,6 +49,111 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                {
+                    "key": "59334c3de5080",
+                    "name": "colors",
+                    "label": "Colors",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_59334c58e5081",
+                            "label": "Color Group",
+                            "name": "color_group",
+                            "type": "repeater",
+                            "instructions": "Add a color group with individual colors.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "collapsed": "",
+                            "min": 0,
+                            "max": 0,
+                            "layout": "block",
+                            "button_label": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_59334c8be5082",
+                                    "label": "Group Label",
+                                    "name": "group_label",
+                                    "type": "text",
+                                    "instructions": "Add a label for the group.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "Brand Colors",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_59334cb2e5083",
+                                    "label": "Colors",
+                                    "name": "colors",
+                                    "type": "repeater",
+                                    "instructions": "Add each color belonging to the group.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "collapsed": "",
+                                    "min": 0,
+                                    "max": 0,
+                                    "layout": "table",
+                                    "button_label": "",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_59334cd0e5084",
+                                            "label": "Color Name",
+                                            "name": "color_name",
+                                            "type": "text",
+                                            "instructions": "Enter the color name.",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "67",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "Hotpink",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": ""
+                                        },
+                                        {
+                                            "key": "field_59334d02e5085",
+                                            "label": "Color",
+                                            "name": "color",
+                                            "type": "color_picker",
+                                            "instructions": "Use the color picker to add the color.",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "33",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": ""
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             ]
         },
@@ -165,5 +270,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1494797071
+    "modified": 1496534347
 }
