@@ -215,7 +215,7 @@
             "allow_null": 0,
             "other_choice": 0,
             "save_other_choice": 0,
-            "default_value": "yes : Yes",
+            "default_value": "no : No",
             "layout": "horizontal",
             "return_format": "value"
         },
@@ -226,7 +226,15 @@
             "type": "wysiwyg",
             "instructions": "Enter the PHP Code needed to produce the component.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5933774ebffb2",
+                        "operator": "==",
+                        "value": "yes"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -245,7 +253,15 @@
             "type": "wysiwyg",
             "instructions": "Enter the Sass code needed to style the component.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5933774ebffb2",
+                        "operator": "==",
+                        "value": "yes"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -264,7 +280,15 @@
             "type": "wysiwyg",
             "instructions": "Add required JavaScript for the component.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5933774ebffb2",
+                        "operator": "==",
+                        "value": "yes"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -294,5 +318,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1496545158
+    "modified": 1496545678
 }
