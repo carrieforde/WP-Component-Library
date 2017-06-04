@@ -289,6 +289,7 @@ class WPCL_Component extends CPT_Core {
 		// Get our data.
 		$usage          = get_post_meta( $post_id, 'usage', true );
 		$implementation = get_post_meta( $post_id, 'implementation', true );
+		$html           = $this->get_component_markup();
 		$php            = get_post_meta( $post_id, 'php', true );
 		$sass           = get_post_meta( $post_id, 'sass', true );
 		$js             = get_post_meta( $post_id, 'javascript', true );
@@ -321,19 +322,22 @@ class WPCL_Component extends CPT_Core {
 					<h2><?php esc_html_e( 'Code', 'wp-component-library' ); ?></h2>
 				</header>
 				<ul>
-					<li><a href="#html-output"><?php esc_html_e( 'HTML Output', 'wpcl-components' ); ?></a></li>
+					<?php echo ( ! empty( $html ) ) ? '<li><a href="#html-output">' . esc_html__( 'HTML Output', 'wpcl-components' ) . '</a></li>' : ''; ?>
 					<?php echo ( ! empty( $php ) ) ? '<li><a href="#php-code">' . esc_html__( 'PHP', 'wpcl-components' ) . '</a></li>' : ''; ?>
 					<?php echo ( ! empty( $sass ) ) ? '<li><a href="#sass-code">' . esc_html__( 'Sass', 'wpcl-components' ) . '</a></li>' : ''; ?>
 					<?php echo ( ! empty( $js ) ) ? '<li><a href="#js-code">' . esc_html__( 'JavaScript', 'wpcl-components' ) . '</a></li>' : ''; ?>
 				</ul>
 
-				<div id="html-output" class="html-output">
-					<pre>
-						<code class="language-html">
-							<?php echo esc_html( $this->get_component_markup() ); ?>
-						</code>
-					</pre>
-				</div><!-- .html-output -->
+				<?php if ( ! empty( $html ) ) : ?>
+					<div id="html-output" class="html-output">
+						<pre>
+							<code class="language-html">
+								<?php echo esc_html( $this->get_component_markup() ); ?>
+							</code>
+						</pre>
+					</div><!-- .html-output -->
+				<?php endif; ?>
+				
 				<?php if ( ! empty( $php ) ) : ?>
 					<div id="php-code" class="php-code">
 						<pre>
