@@ -289,6 +289,7 @@ class WPCL_Component extends CPT_Core {
 		// Get our data.
 		$usage          = get_post_meta( $post_id, 'usage', true );
 		$implementation = get_post_meta( $post_id, 'implementation', true );
+		$show_code      = get_post_meta( $post_id, 'show_code', true );
 		$html           = $this->get_component_markup();
 		$php            = get_post_meta( $post_id, 'php', true );
 		$sass           = get_post_meta( $post_id, 'sass', true );
@@ -317,51 +318,53 @@ class WPCL_Component extends CPT_Core {
 				</div>
 			<?php endif; ?>
 
-			<div id="code-tabs" class="code-tabs">
-				<header class="meta-heading">
-					<h2><?php esc_html_e( 'Code', 'wp-component-library' ); ?></h2>
-				</header>
-				<ul>
-					<?php echo ( ! empty( $html ) ) ? '<li><a href="#html-output">' . esc_html__( 'HTML Output', 'wpcl-components' ) . '</a></li>' : ''; ?>
-					<?php echo ( ! empty( $php ) ) ? '<li><a href="#php-code">' . esc_html__( 'PHP', 'wpcl-components' ) . '</a></li>' : ''; ?>
-					<?php echo ( ! empty( $sass ) ) ? '<li><a href="#sass-code">' . esc_html__( 'Sass', 'wpcl-components' ) . '</a></li>' : ''; ?>
-					<?php echo ( ! empty( $js ) ) ? '<li><a href="#js-code">' . esc_html__( 'JavaScript', 'wpcl-components' ) . '</a></li>' : ''; ?>
-				</ul>
+			<?php if ( 'yes' === $show_code ) : ?>
+				<div id="code-tabs" class="code-tabs">
+					<header class="meta-heading">
+						<h2><?php esc_html_e( 'Code', 'wp-component-library' ); ?></h2>
+					</header>
+					<ul>
+						<?php echo ( ! empty( $html ) ) ? '<li><a href="#html-output">' . esc_html__( 'HTML Output', 'wpcl-components' ) . '</a></li>' : ''; ?>
+						<?php echo ( ! empty( $php ) ) ? '<li><a href="#php-code">' . esc_html__( 'PHP', 'wpcl-components' ) . '</a></li>' : ''; ?>
+						<?php echo ( ! empty( $sass ) ) ? '<li><a href="#sass-code">' . esc_html__( 'Sass', 'wpcl-components' ) . '</a></li>' : ''; ?>
+						<?php echo ( ! empty( $js ) ) ? '<li><a href="#js-code">' . esc_html__( 'JavaScript', 'wpcl-components' ) . '</a></li>' : ''; ?>
+					</ul>
 
-				<?php if ( ! empty( $html ) ) : ?>
-					<div id="html-output" class="html-output">
-						<pre>
-							<code class="language-html">
-								<?php echo esc_html( $this->get_component_markup() ); ?>
-							</code>
-						</pre>
-					</div><!-- .html-output -->
-				<?php endif; ?>
-				
-				<?php if ( ! empty( $php ) ) : ?>
-					<div id="php-code" class="php-code">
-						<pre>
-							<code class="language-php"><?php echo esc_html( $php ); ?></code>
-						</pre>
-					</div><!-- .php-code -->
-				<?php endif; ?>
+					<?php if ( ! empty( $html ) ) : ?>
+						<div id="html-output" class="html-output">
+							<pre>
+								<code class="language-html">
+									<?php echo esc_html( $this->get_component_markup() ); ?>
+								</code>
+							</pre>
+						</div><!-- .html-output -->
+					<?php endif; ?>
 
-				<?php if ( ! empty( $sass ) ) : ?>
-					<div id="sass-code" class="sass-code">
-						<pre>
-							<code class="language-scss"><?php echo esc_html( $sass ); ?></code>
-						</pre>
-					</div><!-- .sass-code -->
-				<?php endif; ?>
+					<?php if ( ! empty( $php ) ) : ?>
+						<div id="php-code" class="php-code">
+							<pre>
+								<code class="language-php"><?php echo esc_html( $php ); ?></code>
+							</pre>
+						</div><!-- .php-code -->
+					<?php endif; ?>
 
-				<?php if ( ! empty( $js ) ) : ?>
-					<div id="js-code" class="js-code">
-						<pre>
-							<code class="language-js"><?php echo esc_html( $js ); ?></code>
-						</pre>
-					</div><!-- .js-code -->
-				<?php endif; ?>
-			</div><!-- .code-tabs -->
+					<?php if ( ! empty( $sass ) ) : ?>
+						<div id="sass-code" class="sass-code">
+							<pre>
+								<code class="language-scss"><?php echo esc_html( $sass ); ?></code>
+							</pre>
+						</div><!-- .sass-code -->
+					<?php endif; ?>
+
+					<?php if ( ! empty( $js ) ) : ?>
+						<div id="js-code" class="js-code">
+							<pre>
+								<code class="language-js"><?php echo esc_html( $js ); ?></code>
+							</pre>
+						</div><!-- .js-code -->
+					<?php endif; ?>
+				</div><!-- .code-tabs -->
+			<?php endif; ?>
 		</div><!-- .wp-component-meta -->
 
 		<?php
