@@ -5,26 +5,19 @@
         {
             "key": "field_5914aff9e2c0b",
             "label": "Background Image",
-            "name": "background_image",
-            "type": "image",
-            "instructions": "Upload an image to be used as the background.",
-            "required": 1,
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "return_format": "id",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
+            "message": "Use the featured image to upload an image to be used as the background. The image should be at least 1600 x 500px.",
+            "new_lines": "wpautop",
+            "esc_html": 0
         },
         {
             "key": "field_5914b01be2c0c",
@@ -157,5 +150,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1494527825
+    "modified": 1496714109
 }
