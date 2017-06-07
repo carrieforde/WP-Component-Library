@@ -417,18 +417,18 @@
                 "id": ""
             },
             "choices": {
-                "yes": "Yes",
-                "no": "No"
+                "no": "No",
+                "yes": "Yes"
             },
             "allow_null": 0,
             "other_choice": 0,
             "save_other_choice": 0,
-            "default_value": "no : No",
+            "default_value": "no",
             "layout": "horizontal",
             "return_format": "value"
         },
         {
-            "key": "field_5914a83393371",
+            "key": "field_593768f90733e",
             "label": "PHP",
             "name": "php",
             "type": "wysiwyg",
@@ -526,5 +526,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1496552310
+    "modified": 1496803634
 }
