@@ -10,7 +10,7 @@
 
 ## Description ##
 
-Manage and collaborate on UI components through WordPress.
+The WP Component Library is a tool that allows you to easily manage and collaborate on User Interface elements for your website projects. The plugin utilizes Advanced Custom Fields Pro to showcase live examples of components, usage and implementation guidelines, as well as any code required for the UI element. This means that WP Component Library can also be used as the basis for a reference library--build up a visual repository of your go-to UI elements, to quickly implement them into future projects!
 
 ## Installation ##
 
