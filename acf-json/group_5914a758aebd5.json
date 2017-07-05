@@ -352,7 +352,34 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "This component has no configurable fields.\r\n\r\nThe Text Elements block outputs the following:\r\n\r\n1. Headings\r\n2. Horizontal Rule\r\n3. Inline elements\r\n4. Paragraph\r\n5. Preformatted",
+                            "message": "This component has no configurable fields.\r\n\r\nThe Text Elements block outputs the following:\r\n1. Headings\r\n2. Horizontal Rule\r\n3. Inline elements\r\n4. Paragraph\r\n5. Preformatted",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "595d19b30f62f": {
+                    "key": "595d19b30f62f",
+                    "name": "form_elements",
+                    "label": "Form Elements",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_595d19ba0f630",
+                            "label": "Instructions",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "This component has no configurable fields.\r\n\r\nThe Form Elements block includes the following:\r\n• Text\r\n• Text with Error\r\n• Radio\r\n• Checkbox\r\n• Textarea\r\n• Select \/ Dropdown\r\n• Search",
                             "new_lines": "wpautop",
                             "esc_html": 0
                         }
@@ -526,5 +553,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1496803634
+    "modified": 1499274148
 }
