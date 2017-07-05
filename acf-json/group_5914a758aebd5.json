@@ -386,6 +386,33 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "595d3ffe24bd0": {
+                    "key": "595d3ffe24bd0",
+                    "name": "image_sizes",
+                    "label": "Image Sizes",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_595d400624bd1",
+                            "label": "Instructions",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "This component has no configurable options.\r\n\r\nThe image sizes component outputs every available image size. Upload a featured image to see the image sizes.",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Row",
@@ -553,5 +580,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1499274148
+    "modified": 1499283118
 }
