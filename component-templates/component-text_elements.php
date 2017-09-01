@@ -71,10 +71,12 @@
 	</div>
 
 	<div class="text-element">
+		<h2><?php esc_html_e( 'Paragraph', 'wp-components' ); ?></h2>
 		<p><?php esc_html_e( 'A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.', 'alcatraz' ); ?></p>
 	</div>
 
 	<div class="text-element">
+		<h2><?php esc_html_e( 'Preformatted Text', 'wp-components' ); ?></h2>
 		<pre><?php esc_html_e( 'P R E F O R M A T T E D T E X T
 ! " # $ % &amp; \' ( ) * + , - . /
 0 1 2 3 4 5 6 7 8 9 : ; &lt; = &gt; ?
@@ -82,5 +84,13 @@
 P Q R S T U V W X Y Z [ \ ] ^ _
 ` a b c d e f g h i j k l m n o
 p q r s t u v w x y z { | } ~', 'alcatraz' ); ?></pre>
+	</div>
+
+	<div class="text-element">
+		<h2><?php esc_html_e( 'Blockquote', 'wp-components' ); ?></h2>
+		<blockquote>
+			<?php esc_html_e( 'You shouldn\'t restrict peoples\' freedom on what they can and cannot do with code.', 'wp-components' ); ?>
+			<cite><?php esc_html_e( 'Matt Mullenweg', 'wp-components' ); ?></cite>
+		</blockquote>
 	</div>
 </section>
