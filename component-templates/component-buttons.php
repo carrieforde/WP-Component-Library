@@ -34,8 +34,20 @@ $buttons = get_post_meta( $post_id, $prefix . 'buttons', true );
 				<h3><?php echo esc_html( $name ); ?></h3>
 				<?php if ( 'button' === $markup ) : ?>
 					<button class="<?php echo esc_attr( $class ); ?>" type="button"><?php echo esc_html( $text ); ?></button>
+					<h4><?php echo esc_html( 'Example usage:', 'wp-components' ); ?></h4>
+					<pre>
+						<code class="lang-html">
+							<?php echo esc_html( '<button class="' . $class . '" type="button">' . $text . '</button>' ); ?>
+						</code>
+					</pre>
 				<?php else : ?>
 					<a class="<?php echo esc_attr( $class ); ?>" href="#"><?php echo esc_html( $text ); ?></a>
+					<h4><?php echo esc_html( 'Example usage:', 'wp-components' ); ?></h4>
+					<pre>
+						<code class="lang-html">
+							<?php echo esc_html( '<a class="' . $class . '" href="#">' . $text . '</a>' ); ?>
+						</code>
+					</pre>
 				<?php endif; ?>
 			</div>
 		<?php endfor; ?>
