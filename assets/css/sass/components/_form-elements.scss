@@ -15,4 +15,12 @@
 			margin-top: 40px;
 		}
 	}
+
+	input[type="radio"],
+	input[type="checkbox"] {
+
+		+ label {
+			margin-top: 15px;
+		}
+	}
 }

@@ -186,7 +186,7 @@ final class WP_Component_Library {
 	 */
 	public function hooks() {
 		add_action( 'init', array( $this, 'init' ), 0 );
-		add_action( 'acf/settings/save_json', array( $this, 'acf_json_save_point' ) );
+		// add_action( 'acf/settings/save_json', array( $this, 'acf_json_save_point' ) );
 		add_action( 'acf/settings/load_json', array( $this, 'acf_json_load_point' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts_styles' ) );
 	}
