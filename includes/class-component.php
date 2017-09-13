@@ -203,6 +203,11 @@ class WPCL_Component extends CPT_Core {
 		// Get our data.
 		$component = get_post_meta( $post_id, 'component', true );
 
+		// Bail if we don't have a component.
+		if ( ! $component ) {
+			return;
+		}
+
 		// Determine which layout to grab.
 		foreach ( (array) $component as $count => $component ) {
 
@@ -225,9 +230,11 @@ class WPCL_Component extends CPT_Core {
 	}
 
 	/**
-	 * Display implementation.
+	 * Get the implementation meta.
+	 *
+	 * @param int  $post_id  The post ID.
 	 */
-	public function display_implementation( $post_id = 0 ) {
+	public function get_single_meta_value( $post_id = 0, $field = '' ) {
 
 		// Get the post id.
 		if ( ! $post_id ) {
@@ -235,11 +242,17 @@ class WPCL_Component extends CPT_Core {
 		}
 
 		// Get component implementation.
-		$implementation = get_post_meta( $post_id, 'implementation', true );
+		return get_post_meta( $post_id, $field, true );
+	}
 
-		// Bail if no implementation info.
-		if ( ! $implementation ) {
-			return '';
+	/**
+	 * Display implementation.
+	 */
+	public function display_implementation( $post_id = 0 ) {
+
+		// Check if we have implementation meta.
+		if ( empty( $this->get_single_meta_value( $post_id, 'implementation' ) ) ) {
+			return;
 		}
 
 		// Implementation markup. ?>
@@ -248,7 +261,7 @@ class WPCL_Component extends CPT_Core {
 				<h2><?php esc_html_e( 'Implementation', 'wp-component-library' ); ?></h2>
 			</header>
 			<pre>
-				<code class="language-php"><?php echo esc_html( $implementation ); ?></code>
+				<code class="language-php"><?php echo esc_html( $this->get_single_meta_value( $post_id, 'implementation' ) ); ?></code>
 			</pre>
 		</div><!-- .code-implementation -->
 		
@@ -289,91 +302,115 @@ class WPCL_Component extends CPT_Core {
 	}
 
 	/**
+	 * Get the data for the code tabs.
+	 *
+	 * @param  int  $post_id  The Post ID.
+	 */
+	public function get_tab_data( $post_id = 0 ) {
+
+		$args = array();
+
+		if ( ! empty( $this->get_component_markup() ) ) {
+			$args['html'] = array(
+				'data'     => $this->get_component_markup(),
+				'language' => 'html',
+				'tab_name' => 'HTML',
+			);
+		}
+		if ( ! empty( $this->get_single_meta_value( $post_id, 'php_template' ) ) ) {
+			$args['php_template'] = array(
+				'data'     => $this->get_single_meta_value( $post_id, 'php_template' ),
+				'language' => 'php',
+				'tab_name' => 'PHP Template',
+			);
+		}
+		if ( ! empty( $this->get_single_meta_value( $post_id, 'php_logic' ) ) ) {
+			$args['php_logic'] = array(
+				'data'     => $this->get_single_meta_value( $post_id, 'php_logic' ),
+				'language' => 'php',
+				'tab_name' => 'PHP Logic',
+			);
+		}
+		if ( ! empty( $this->get_single_meta_value( $post_id, 'sass' ) ) ) {
+			$args['sass'] = array(
+				'data'     => $this->get_single_meta_value( $post_id, 'sass' ),
+				'language' => 'scss',
+				'tab_name' => 'Sass',
+			);
+		}
+		if ( ! empty( $this->get_single_meta_value( $post_id, 'javascript' ) ) ) {
+			$args['javascript'] = array(
+				'data'     => $this->get_single_meta_value( $post_id, 'javascript' ),
+				'language' => 'javascript',
+				'tab_name' => 'JavaScript',
+			);
+		}
+
+		return $args;
+	}
+
+	/**
+	 * Display the tabbed code meta.
+	 *
+	 * @param  int  $post_id  The Post ID.
+	 */
+	public function display_code_tabs( $post_id = 0 ) {
+
+		// Get the tab data.
+		$tab_data = $this->get_tab_data();
+
+		// Bail if we don't have tab data.
+		if ( ! $tab_data ) {
+			return;
+		}
+
+		// Build tab ?>
+		<div id="code-tabs" class="code-tabs">
+			<header class="meta-heading">
+				<h2><?php esc_html_e( 'Code', 'wp-component-library' ); ?></h2>
+			</header>
+			
+			<ul>
+				<?php foreach ( $tab_data as $key => $value ) : ?>
+					<li><a href="#<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $value['tab_name'] ); ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+
+			<?php foreach ( $tab_data as $key => $value ) : ?>
+				<div id="<?php echo esc_attr( $key ); ?>">
+					<pre>
+						<code class="language-<?php echo esc_attr( $value['language'] ); ?>">
+							<?php echo esc_html( $value['data'] ); ?>
+						</code>
+					</pre>
+				</div>
+			<?php endforeach; ?>
+		</div><!-- .code-tabs -->
+		<?php
+	}
+
+	/**
 	 * Build the markup for the component meta.
 	 *
 	 * @param   int  $post_id  ID of the post for which to display the meta.
-	 * @author                      Carrie Forde
 	 */
 	public function display_component_meta( $post_id = 0 ) {
 
-		// Get the post id.
-		if ( ! $post_id ) {
-			$post_id = get_the_ID();
+		// Bail if we're not showing the code.
+		if ( 'no' === $this->get_single_meta_value( $post_id, 'show_code' ) ) {
+			return;
 		}
 
-		// Get our data.
-		$show_code      = get_post_meta( $post_id, 'show_code', true );
-		$html           = $this->get_component_markup();
-		$php_logic      = get_post_meta( $post_id, 'php_logic', true );
-		$php_template   = get_post_meta( $post_id, 'php_template', true );
-		$sass           = get_post_meta( $post_id, 'sass', true );
-		$js             = get_post_meta( $post_id, 'javascript', true );
+		echo '<div class="wp-component-meta">';
 
-		// Start the markup. 🎉 ?>
-		<div class="wp-component-meta">
+		// Implementation code.
+		$this->display_implementation();
 
-			<?php if ( 'yes' === $show_code ) :
+		// Tabs.
+		$this->display_code_tabs();
 
-				$this->display_implementation(); ?>
-
-				<div id="code-tabs" class="code-tabs">
-					<header class="meta-heading">
-						<h2><?php esc_html_e( 'Code', 'wp-component-library' ); ?></h2>
-					</header>
-					<ul>
-						<?php echo ( ! empty( $html ) ) ? '<li><a href="#html-output">' . esc_html__( 'HTML Output', 'wpcl-components' ) . '</a></li>' : ''; ?>
-						<?php echo ( ! empty( $php_logic ) ) ? '<li><a href="#php-logic">' . esc_html__( 'PHP Logic', 'wpcl-components' ) . '</a></li>' : ''; ?>
-						<?php echo ( ! empty( $php_template ) ) ? '<li><a href="#php-template">' . esc_html__( 'PHP Template', 'wpcl-components' ) . '</a></li>' : ''; ?>
-						<?php echo ( ! empty( $sass ) ) ? '<li><a href="#sass-code">' . esc_html__( 'Sass', 'wpcl-components' ) . '</a></li>' : ''; ?>
-						<?php echo ( ! empty( $js ) ) ? '<li><a href="#js-code">' . esc_html__( 'JavaScript', 'wpcl-components' ) . '</a></li>' : ''; ?>
-					</ul>
-
-					<?php if ( ! empty( $html ) ) : ?>
-						<div id="html-output" class="html-output">
-							<pre>
-								<code class="language-html">
-									<?php echo esc_html( $this->get_component_markup() ); ?>
-								</code>
-							</pre>
-						</div><!-- .html-output -->
-					<?php endif; ?>
-
-					<?php if ( ! empty( $php_logic ) ) : ?>
-						<div id="php-logic" class="php-code">
-							<pre>
-								<code class="language-php"><?php echo esc_html( $php_logic ); ?></code>
-							</pre>
-						</div><!-- .php-logic -->
-					<?php endif; ?>
-
-					<?php if ( ! empty( $php_template ) ) : ?>
-						<div id="php-template" class="php-code">
-							<pre>
-								<code class="language-php"><?php echo esc_html( $php_template ); ?></code>
-							</pre>
-						</div><!-- .php-logic -->
-					<?php endif; ?>
-
-					<?php if ( ! empty( $sass ) ) : ?>
-						<div id="sass-code" class="sass-code">
-							<pre>
-								<code class="language-scss"><?php echo esc_html( $sass ); ?></code>
-							</pre>
-						</div><!-- .sass-code -->
-					<?php endif; ?>
-
-					<?php if ( ! empty( $js ) ) : ?>
-						<div id="js-code" class="js-code">
-							<pre>
-								<code class="language-js"><?php echo esc_html( $js ); ?></code>
-							</pre>
-						</div><!-- .js-code -->
-					<?php endif; ?>
-				</div><!-- .code-tabs -->
-			<?php endif; ?>
-		</div><!-- .wp-component-meta -->
-
-		<?php // Related components.
+		// Related components.
 		$this->display_related_components();
+		echo '</div><!-- .wp-component-meta -->';
 	}
 }
