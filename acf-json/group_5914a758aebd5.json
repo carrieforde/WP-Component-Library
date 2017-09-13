@@ -451,11 +451,11 @@
             "max": 1
         },
         {
-            "key": "field_59b96254c7fdd",
-            "label": "Status",
-            "name": "status",
-            "type": "radio",
-            "instructions": "Select the status of the component.",
+            "key": "field_59b96388a4d02",
+            "label": "Related Components",
+            "name": "related_components",
+            "type": "relationship",
+            "instructions": "If this component is made up of other components, link to those components here.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -463,18 +463,18 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "approved": "Approved",
-                "in-review": "In Review",
-                "in-progress": "In Progress",
-                "deprecated": "Deprecated"
-            },
-            "allow_null": 0,
-            "other_choice": 0,
-            "save_other_choice": 0,
-            "default_value": "",
-            "layout": "horizontal",
-            "return_format": "value"
+            "post_type": [
+                "wpcl-component"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "id"
         },
         {
             "key": "field_5933774ebffb2",
@@ -653,5 +653,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1505321830
+    "modified": 1505322214
 }

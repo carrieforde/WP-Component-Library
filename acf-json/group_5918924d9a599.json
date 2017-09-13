@@ -3,7 +3,7 @@
     "title": "Component Status",
     "fields": [
         {
-            "key": "field_59189256adf94",
+            "key": "field_59189256adf94__trashed",
             "label": "Status Color",
             "name": "status_color",
             "type": "color_picker",
@@ -35,5 +35,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1494782726
+    "modified": 1505322234
 }
