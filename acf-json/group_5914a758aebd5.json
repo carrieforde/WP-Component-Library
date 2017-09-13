@@ -16,37 +16,6 @@
                 "id": ""
             },
             "layouts": {
-                "5914a7f2611ba": {
-                    "key": "5914a7f2611ba",
-                    "name": "image_hero",
-                    "label": "Image Hero",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5914b169ece61",
-                            "label": "Image Hero",
-                            "name": "image_hero",
-                            "type": "clone",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "clone": [
-                                "group_5914adecb1b12"
-                            ],
-                            "display": "seamless",
-                            "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
                 "59334c3de5080": {
                     "key": "59334c3de5080",
                     "name": "colors",
@@ -413,30 +382,73 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "5914a7f2611ba": {
+                    "key": "5914a7f2611ba",
+                    "name": "image_hero",
+                    "label": "Image Hero",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5914b169ece61",
+                            "label": "Image Hero",
+                            "name": "image_hero",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5914adecb1b12"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "59a5bf5b21094": {
+                    "key": "59a5bf5b21094",
+                    "name": "tabs",
+                    "label": "Tabs",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_59a631d6e190c",
+                            "label": "Tabs",
+                            "name": "tabs",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_59a6316499743"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Row",
             "min": "",
             "max": 1
-        },
-        {
-            "key": "field_5918ca7e15998",
-            "label": "Usage",
-            "name": "usage",
-            "type": "wysiwyg",
-            "instructions": "Indicate the dos \/ don'ts, rules, and considerations of using this component. E.g. \"Use this hero for single posts, and use the masthead for pages.\"",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "basic",
-            "media_upload": 0,
-            "delay": 0
         },
         {
             "key": "field_5914a80c93370",
@@ -580,5 +592,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1499283118
+    "modified": 1505321482
 }
