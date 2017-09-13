@@ -551,7 +551,7 @@
             "default_value": "",
             "tabs": "text",
             "toolbar": "basic",
-            "media_upload": 1,
+            "media_upload": 0,
             "delay": 0
         },
         {
@@ -578,7 +578,7 @@
             "default_value": "",
             "tabs": "text",
             "toolbar": "basic",
-            "media_upload": 1,
+            "media_upload": 0,
             "delay": 0
         },
         {
@@ -653,5 +653,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1505322214
+    "modified": 1505322938
 }
