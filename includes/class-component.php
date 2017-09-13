@@ -225,6 +225,37 @@ class WPCL_Component extends CPT_Core {
 	}
 
 	/**
+	 * Display implementation.
+	 */
+	public function display_implementation( $post_id = 0 ) {
+
+		// Get the post id.
+		if ( ! $post_id ) {
+			$post_id = get_the_ID();
+		}
+
+		// Get component implementation.
+		$implementation = get_post_meta( $post_id, 'implementation', true );
+
+		// Bail if no implementation info.
+		if ( ! $implementation ) {
+			return '';
+		}
+
+		// Implementation markup. ?>
+		<div class="code-implementation">
+			<header class="meta-heading">
+				<h2><?php esc_html_e( 'Implementation', 'wp-component-library' ); ?></h2>
+			</header>
+			<pre>
+				<code class="language-php"><?php echo esc_html( $implementation ); ?></code>
+			</pre>
+		</div><!-- .code-implementation -->
+		
+		<?php
+	}
+
+	/**
 	 * Display related components.
 	 */
 	public function display_related_components( $post_id = 0 ) {
@@ -237,6 +268,7 @@ class WPCL_Component extends CPT_Core {
 		// Get related components.
 		$related = get_post_meta( $post_id, 'related_components', true );
 
+		// Bail if no related components.
 		if ( ! $related ) {
 			return '';
 		}
@@ -270,7 +302,6 @@ class WPCL_Component extends CPT_Core {
 		}
 
 		// Get our data.
-		$implementation = get_post_meta( $post_id, 'implementation', true );
 		$show_code      = get_post_meta( $post_id, 'show_code', true );
 		$html           = $this->get_component_markup();
 		$php_logic      = get_post_meta( $post_id, 'php_logic', true );
@@ -281,18 +312,9 @@ class WPCL_Component extends CPT_Core {
 		// Start the markup. 🎉 ?>
 		<div class="wp-component-meta">
 
-			<?php if ( 'yes' === $show_code ) : ?>
+			<?php if ( 'yes' === $show_code ) :
 
-				<?php if ( ! empty( $implementation ) ) : ?>
-					<div class="code-implementation">
-						<header class="meta-heading">
-							<h2><?php esc_html_e( 'Implementation', 'wp-component-library' ); ?></h2>
-						</header>
-						<pre>
-							<code class="language-php"><?php echo esc_html( $implementation ); ?></code>
-						</pre>
-					</div>
-				<?php endif; ?>
+				$this->display_implementation(); ?>
 
 				<div id="code-tabs" class="code-tabs">
 					<header class="meta-heading">
@@ -351,8 +373,7 @@ class WPCL_Component extends CPT_Core {
 			<?php endif; ?>
 		</div><!-- .wp-component-meta -->
 
-		<?php
-		// Related components.
+		<?php // Related components.
 		$this->display_related_components();
 	}
 }
