@@ -238,45 +238,39 @@ class WPCL_Component extends CPT_Core {
 		}
 
 		// Get our data.
-		$usage          = get_post_meta( $post_id, 'usage', true );
 		$implementation = get_post_meta( $post_id, 'implementation', true );
+		$related        = get_post_meta( $post_id, 'related_components', true );
 		$show_code      = get_post_meta( $post_id, 'show_code', true );
 		$html           = $this->get_component_markup();
-		$php            = get_post_meta( $post_id, 'php', true );
+		$php_logic      = get_post_meta( $post_id, 'php_logic', true );
+		$php_template   = get_post_meta( $post_id, 'php_template', true );
 		$sass           = get_post_meta( $post_id, 'sass', true );
 		$js             = get_post_meta( $post_id, 'javascript', true );
 
 		// Start the markup. 🎉 ?>
 		<div class="wp-component-meta">
 
-			<?php if ( ! empty( $usage ) ) : ?>
-				<div class="component-usage">
-					<header class="meta-heading">
-						<h2><?php esc_html_e( 'Usage', 'wp-component-library' ); ?></h2>
-					</header>
-					<div><?php echo wp_kses_post( $usage ); ?></div>
-				</div>
-			<?php endif; ?>
-
-			<?php if ( ! empty( $implementation ) ) : ?>
-				<div class="code-implementation">
-					<header class="meta-heading">
-						<h2><?php esc_html_e( 'Implementation', 'wp-component-library' ); ?></h2>
-					</header>
-					<pre>
-						<code class="language-php"><?php echo esc_html( $implementation ); ?></code>
-					</pre>
-				</div>
-			<?php endif; ?>
-
 			<?php if ( 'yes' === $show_code ) : ?>
+
+				<?php if ( ! empty( $implementation ) ) : ?>
+					<div class="code-implementation">
+						<header class="meta-heading">
+							<h2><?php esc_html_e( 'Implementation', 'wp-component-library' ); ?></h2>
+						</header>
+						<pre>
+							<code class="language-php"><?php echo esc_html( $implementation ); ?></code>
+						</pre>
+					</div>
+				<?php endif; ?>
+
 				<div id="code-tabs" class="code-tabs">
 					<header class="meta-heading">
 						<h2><?php esc_html_e( 'Code', 'wp-component-library' ); ?></h2>
 					</header>
 					<ul>
 						<?php echo ( ! empty( $html ) ) ? '<li><a href="#html-output">' . esc_html__( 'HTML Output', 'wpcl-components' ) . '</a></li>' : ''; ?>
-						<?php echo ( ! empty( $php ) ) ? '<li><a href="#php-code">' . esc_html__( 'PHP', 'wpcl-components' ) . '</a></li>' : ''; ?>
+						<?php echo ( ! empty( $php_logic ) ) ? '<li><a href="#php-logic">' . esc_html__( 'PHP Logic', 'wpcl-components' ) . '</a></li>' : ''; ?>
+						<?php echo ( ! empty( $php_template ) ) ? '<li><a href="#php-template">' . esc_html__( 'PHP Template', 'wpcl-components' ) . '</a></li>' : ''; ?>
 						<?php echo ( ! empty( $sass ) ) ? '<li><a href="#sass-code">' . esc_html__( 'Sass', 'wpcl-components' ) . '</a></li>' : ''; ?>
 						<?php echo ( ! empty( $js ) ) ? '<li><a href="#js-code">' . esc_html__( 'JavaScript', 'wpcl-components' ) . '</a></li>' : ''; ?>
 					</ul>
@@ -291,12 +285,20 @@ class WPCL_Component extends CPT_Core {
 						</div><!-- .html-output -->
 					<?php endif; ?>
 
-					<?php if ( ! empty( $php ) ) : ?>
-						<div id="php-code" class="php-code">
+					<?php if ( ! empty( $php_logic ) ) : ?>
+						<div id="php-logic" class="php-code">
 							<pre>
-								<code class="language-php"><?php echo esc_html( $php ); ?></code>
+								<code class="language-php"><?php echo esc_html( $php_logic ); ?></code>
 							</pre>
-						</div><!-- .php-code -->
+						</div><!-- .php-logic -->
+					<?php endif; ?>
+
+					<?php if ( ! empty( $php_template ) ) : ?>
+						<div id="php-template" class="php-code">
+							<pre>
+								<code class="language-php"><?php echo esc_html( $php_template ); ?></code>
+							</pre>
+						</div><!-- .php-logic -->
 					<?php endif; ?>
 
 					<?php if ( ! empty( $sass ) ) : ?>
