@@ -264,17 +264,14 @@ final class WP_Component_Library {
 		// Include the plugin's stylesheet.
 		wp_enqueue_style( 'wpcl-styles', $this->url . 'styles.css', array(), '0.0.0' );
 
-		// Enqueue Prism.js (and .css) & jQuery tabs only on the single component.
+		// Enqueue Prism.js (and .css) only on the single component.
 		if ( 'wpcl-component' === get_post_type() ) {
 
 			// Prism Styles.
-			wp_enqueue_style( 'prism-styles', $this->url . 'assets/css/prism.css', array(), '0.0.0' );
+			wp_enqueue_style( 'prism-styles', $this->url . 'assets/vendor/prism/prism.css', array(), '0.0.0' );
 
 			// Prism JS.
-			wp_enqueue_script( 'prismjs', $this->url . 'assets/scripts/prism.js', array(), '1.0.0', true );
-
-			// jQuery tabs.
-			wp_enqueue_script( 'jquery-ui-tabs' );
+			wp_enqueue_script( 'prismjs', $this->url . 'assets/vendor/prism/prism.js', array(), '1.0.0', true );
 		}
 
 		// Include the plugin's scripts.
