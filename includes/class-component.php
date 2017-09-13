@@ -225,9 +225,41 @@ class WPCL_Component extends CPT_Core {
 	}
 
 	/**
+	 * Display related components.
+	 */
+	public function display_related_components( $post_id = 0 ) {
+
+		// Get the post id.
+		if ( ! $post_id ) {
+			$post_id = get_the_ID();
+		}
+
+		// Get related components.
+		$related = get_post_meta( $post_id, 'related_components', true );
+
+		if ( ! $related ) {
+			return '';
+		}
+
+		// Related component markup. ?>
+		<div class="component-meta component-related">
+			<header class="meta-heading">
+				<h2><?php esc_html_e( 'Related Components', 'wp-component-library' ); ?></h2>
+			</header>
+			<ul>
+				<?php foreach ( $related as $post ) : ?>
+					<li><a href="<?php echo esc_url( get_permalink( $post ) ); ?>"><?php echo esc_html( get_the_title( $post ) ); ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+		</div><!-- .component-related -->
+
+		<?php
+	}
+
+	/**
 	 * Build the markup for the component meta.
 	 *
-	 * @param   interger  $post_id  ID of the post for which to display the meta.
+	 * @param   int  $post_id  ID of the post for which to display the meta.
 	 * @author                      Carrie Forde
 	 */
 	public function display_component_meta( $post_id = 0 ) {
@@ -239,7 +271,6 @@ class WPCL_Component extends CPT_Core {
 
 		// Get our data.
 		$implementation = get_post_meta( $post_id, 'implementation', true );
-		$related        = get_post_meta( $post_id, 'related_components', true );
 		$show_code      = get_post_meta( $post_id, 'show_code', true );
 		$html           = $this->get_component_markup();
 		$php_logic      = get_post_meta( $post_id, 'php_logic', true );
@@ -321,5 +352,7 @@ class WPCL_Component extends CPT_Core {
 		</div><!-- .wp-component-meta -->
 
 		<?php
+		// Related components.
+		$this->display_related_components();
 	}
 }
